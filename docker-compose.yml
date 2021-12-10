@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  app:
+    image: public.ecr.aws/u8a1v5x2/ld4p/qa_authority_lookup:latest
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_RAILS_USER: qa
+      DATABASE_RAILS_USER_PW: qa
+      DATABASE_RAILS_ROOT_PW: qa
+      DATABASE_NAME_PREFIX: qa_server
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:-default}
+      RELOAD_TOKEN: ${RELOAD_TOKEN:-default}
+    volumes:
+      - ./authorities:/app/ld4p/qa_server-webapp/config/authorities
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: qaroot
+      # Values below should reflect DATABASE_ values above.
+      MYSQL_DATABASE: qa_server_development
+      MYSQL_USER: qa
+      MYSQL_PASSWORD: qa
+    ports:
+      - "${EXTERNAL_MYSQL_PORT:-3366}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql/data
+
+volumes:
+  mysql-data:
