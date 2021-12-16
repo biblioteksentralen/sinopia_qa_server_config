@@ -27,7 +27,7 @@
     "results": {
       "label_ldpath":    "skos:prefLabel ::xsd:string",
       "altlabel_ldpath": "skos:altLabel ::xsd:string",
-      "sameas_ldpath":   "rdfs:sameAs ::xsd:anyURI",
+      "sameas_ldpath":   "skos:exactMatch ::xsd:anyURI",
       "broader_ldpath":  "skos:broader ::xsd:anyURI",
       "narrower_ldpath": "skos:narrower ::xsd:anyURI"
     }
@@ -36,7 +36,7 @@
     "url": {
       "@context": "http://www.w3.org/ns/hydra/context.jsonld",
       "@type": "IriTemplate",
-      "template": "https://vokabular.bs.no/rest/v1/bibbi/search?lang=nb&labellang=nb&type={subauth}&query=%22{query}%22&maxhits={maxRecords}",
+      "template": "https://vokabular.bs.no/rest/v1/bibbi/search?lang={lang}&labellang={lang}&maxhits={maxRecords}&type={subauth}&query={query}*",
       "variableRepresentation": "BasicRepresentation",
       "mapping": [
         {
@@ -59,6 +59,13 @@
           "property": "hydra:freetextQuery",
           "required": false,
           "default": "20"
+        },
+        {
+          "@type": "IriTemplateMapping",
+          "variable": "lang",
+          "property": "hydra:freetextQuery",
+          "required": false,
+          "default": "nb"
         }
       ]
     },
@@ -70,17 +77,42 @@
       "label_ldpath": "skos:prefLabel ::xsd:string",
       "sort_ldpath":  "skos:prefLabel ::xsd:string"
     },
+    "context": {
+      "properties": [
+        {
+          "property_label_i18n": "qa.linked_data.authority.locgenres_ld4l_cache.preferred_label",
+          "property_label_default": "Preferred label",
+          "ldpath": "skos:prefLabel :: xsd:string",
+          "selectable": true,
+          "drillable": false
+        },
+        {
+          "property_label_i18n": "qa.linked_data.authority.locgenres_ld4l_cache.alt_label",
+          "property_label_default": "Alternative Label",
+          "ldpath": "skos:altLabel :: xsd:string",
+          "selectable": false,
+          "drillable": false
+        },
+        {
+          "property_label_i18n": "qa.linked_data.authority.locgenres_ld4l_cache.webdewey",
+          "property_label_default": "WebDewey class",
+          "ldpath": "bs:webdewey :: xsd:string",
+          "selectable": false,
+          "drillable": false
+        }
+      ]
+    },
     "subauthorities": {
-      "topic":          "bs:Topic",
-      "geographic":     "bs:Place",
-      "event_name":     "bs:Event",
-      "person":         "bs:Person",
-      "personal_name":  "bs:Person",
-      "person_subject": "bs:PersonAsSubject",
-      "organization":   "bs:Corporation",
-      "corporate_name": "bs:Corporation",
-      "uniform_title":  "bs:Title",
-      "form":           "bs:FormGenre"
+      "topic":                "bs:Topic",
+      "geographic":           "bs:Place",
+      "event_name":           "bs:Event",
+      "person":               "bs:Person",
+      "person_subject":       "bs:PersonAsSubject",
+      "corporation":          "bs:Corporation",
+      "corporation_subject":  "bs:CorporationAsSubject",
+      "uniform_title":        "bs:Title",
+      "work":                 "bs:Work",
+      "form":                 "bs:FormGenre"
     }
   }
 }

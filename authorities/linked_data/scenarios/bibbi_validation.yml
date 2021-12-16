@@ -1,60 +1,84 @@
+# Reference: https://github.com/LD4P/qa_server/wiki/Writing-Tests-for-an-Authority
 ---
 authority:
   service: direct
 search:
   -
-    query: 'twain, mark'
+    query: Øyehaug, Gunnhild
+    position: 2
+    subject_uri: https://id.bs.no/bibbi/40168
     replacements:
-      maxRecords: '10'
+      maxRecords: 10
   -
-    query: 'twain, mark'
+    query: Engelsk litteratur - Australia
+    subauth: topic
+    position: 1
+    subject_uri: https://id.bs.no/bibbi/1115951
+    replacements:
+      maxRecords: 10
+  -
+    query: Bergen
+    subauth: geographic
+    position: 1
+    subject_uri: https://id.bs.no/bibbi/1162677
+    replacements:
+      maxRecords: 10
+  -
+    query: Riddu Riđđu
+    subauth: event_name
+    position: 1
+    subject_uri: https://id.bs.no/bibbi/1175496
+    replacements:
+      maxRecords: 10
+  -
+    query: Boye, Karin
     subauth: person
-    result_size: 100
+    position: 1
+    subject_uri: https://id.bs.no/bibbi/5568
     replacements:
-      maxRecords: '4'
+      maxRecords: 10
   -
-    query: 'Ibsenforbundet'
-    subauth: organization
-    result_size: 1
+    query: Boye, Karin
+    subauth: person_subject
+    position: 1
+    subject_uri: https://id.bs.no/bibbi/1067799
     replacements:
-      maxRecords: '4'
-
-  # -
-  #   query: Cayuga
-  #   subauth: topic
-  #   replacements:
-  #     maxRecords: '4'
-  # -
-  #   query: Festival
-  #   subauth: event_name
-  #   replacements:
-  #     maxRecords: '4'
-  # -
-  #   query: Cayuga
-  #   subauth: geocoordinates
-  #   replacements:
-  #     maxRecords: '4'
-  # -
-  #   query: 'mark twain'
-  #   subauth: uniform_title
-  #   replacements:
-  #     maxRecords: '4'
-  # -
-  #   query: '1276-1285'
-  #   subauth: period
-  #   result_size: 50
-  #   replacements:
-  #     maxRecords: '4'
-  # -
-  #   query: animation
-  #   subauth: form
-  #   replacements:
-  #     maxRecords: '4'
-  # -
-  #   query: animation
-  #   subauth: alt_lc
-  #   replacements:
-  #     maxRecords: '4'
+      maxRecords: 10
+  -
+    query: Forente nasjoner
+    subauth: corporation
+    position: 5
+    subject_uri: https://id.bs.no/bibbi/1174004
+    replacements:
+      maxRecords: 10
+  -
+    query: Forente nasjoner - Fredsbevarende operasjoner
+    subauth: corporation_subject
+    position: 1
+    subject_uri: https://id.bs.no/bibbi/1170005
+    replacements:
+      maxRecords: 10
+  -
+    query: "*Bestemor søv"
+    subject_uri: https://id.bs.no/bibbi/1067308
+    position: 1
+    subauth: uniform_title
+    replacements:
+      maxRecords: 10
+  -
+    query: Vente, blinke
+    subject_uri: https://id.bs.no/bibbi/1235719
+    position: 1
+    subauth: work
+    replacements:
+      maxRecords: 10
+  -
+    query: Dokumentarfilmer
+    subject_uri: https://id.bs.no/bibbi/1165870
+    position: 1
+    subauth: form
+    replacements:
+      maxRecords: 10
 term:
   -
-    identifier: 'https://id.bs.no/bibbi/37170'
+    identifier: https://id.bs.no/bibbi/37170
