@@ -5,7 +5,7 @@ authority:
 search:
   -
     query: Øyehaug, Gunnhild
-    position: 2
+    position: 10
     subject_uri: https://id.bs.no/bibbi/40168
     replacements:
       maxRecords: 10
